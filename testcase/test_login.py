@@ -20,7 +20,7 @@ class TestLogin(object):
 
         expected = case['expected']
         loginpage = LoginPage(browser)
-        actural = loginpage.login_fail(case['username'],case['pwd']).get_tip_msg()
+        actural = loginpage.get().login_fail(case['username'],case['pwd']).get_tip_msg()
         assert expected == actural
 
     @pytest.mark.parametrize('case',login_toast_data)
@@ -28,7 +28,7 @@ class TestLogin(object):
 
         expected = case['expected']
         loginpage = LoginPage(browser)
-        actural = loginpage.login_fail(case['username'],case['pwd']).get_toast_msg()
+        actural = loginpage.get().login_fail(case['username'],case['pwd']).get_toast_msg()
         assert expected == actural
 
     @pytest.mark.parametrize('case',login_success_data)
@@ -36,7 +36,7 @@ class TestLogin(object):
 
         expected = case['expected']
         loginpage = LoginPage(browser)
-        actural = loginpage.login_success(case['username'],case['pwd']).get_user_info()
+        actural = loginpage.get().login_success(case['username'],case['pwd']).get_user_info()
         assert expected in actural
 
 
